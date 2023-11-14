@@ -1,14 +1,17 @@
 require 'net/http'
 
-class CmsService
+class CmsService < BaseService
   def initialize
-    @http = Net::HTTP.new(Rails.configuration.x.directus.url, 443)
+    port = Rails.configuration.x.directus.port || 443
+
+    @http = Net::HTTP.new(Rails.configuration.x.directus.host, port)
+    @http.use_ssl = true if port == 443
   end
 
   def articles
     self.send_graphql <<-GQL
     query {
-      articles {
+      article {
         id
         title
         user_created {
@@ -25,6 +28,7 @@ class CmsService
   
 private
   def send_graphql(query)
-    JSON.parse @http.post('/graphql/system', query).body
+    puts query
+    JSON.parse @http.post('/graphql/system', {:query => query}.to_json, { 'Content-Type' => 'application/json' }).body
   end
 end
