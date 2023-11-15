@@ -7,6 +7,7 @@ export default defineNuxtConfig({
             enabled: true,
         },
     },
+    css: ["~/assets/css/main.css"],
     typescript: {
         tsConfig: {
             compilerOptions: {
@@ -16,5 +17,11 @@ export default defineNuxtConfig({
     },
     routeRules: {
         "*": { experimentalNoScripts: true },
+    },
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
     },
 });

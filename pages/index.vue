@@ -1,7 +1,5 @@
-<script setup>
-const { $directus, $readItems } = useNuxtApp();
-
-const articles = await $directus.request($readItems('articles')).catch(console.log)
+<script setup lang="ts">
+const { data: articles } = await useArticles();
 </script>
 <template>
     <div>
