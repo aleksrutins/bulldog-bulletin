@@ -1,6 +1,14 @@
 <script setup>
-const { getItems } = useDirectusItems();
-const articles = await getItems({ collection: 'articles' })
+const { $directus, $readItems } = useNuxtApp();
+
+const { data: articles } = await useAsyncData('articles', () =>
+    $directus.request(
+        $readItems('articles', {
+            fields: ['id', 'title', 'date_created', { 'user_created': ['first_name', 'last_name'] }],
+            sort: '-date_created'
+        })
+    )
+)
 </script>
 <template>
     <div>

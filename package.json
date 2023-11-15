@@ -13,8 +13,10 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "nuxt": "^3.8.1",
-    "nuxt-directus": "latest",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@directus/sdk": "^13.0.1"
   }
 }
