@@ -1,7 +1,10 @@
-import { createDirectus, graphql, readItem, readItems } from "@directus/sdk";
+import { createDirectus, rest, readItem, readItems } from "@directus/sdk";
 
-const directus = createDirectus('https://bulldog-bulletin-production.up.railway.app').with(graphql());
+const directus = createDirectus(
+    process.env.NUXT_PUBLIC_DIRECTUS_URL ??
+        "https://bulldog-bulletin-production.up.railway.app",
+).with(rest());
 
 export default defineNuxtPlugin(() => ({
-    provide: { directus, readItem, readItems }
-}))
+    provide: { directus, readItem, readItems },
+}));
