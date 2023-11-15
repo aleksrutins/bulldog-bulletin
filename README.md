@@ -1,24 +1,75 @@
-# README
+# Nuxt 3 Minimal Starter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Make sure to install the dependencies:
 
-* System dependencies
+```bash
+# npm
+npm install
 
-* Configuration
+# pnpm
+pnpm install
 
-* Database creation
+# yarn
+yarn install
 
-* Database initialization
+# bun
+bun install
+```
 
-* How to run the test suite
+## Development Server
 
-* Services (job queues, cache servers, search engines, etc.)
+Start the development server on `http://localhost:3000`:
 
-* Deployment instructions
+```bash
+# npm
+npm run dev
 
-* ...
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
