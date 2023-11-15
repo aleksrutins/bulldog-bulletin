@@ -1,4 +1,4 @@
 <template>
     <AppHeader />
-    <RouterView />
+    <NuxtPage />
 </template>
