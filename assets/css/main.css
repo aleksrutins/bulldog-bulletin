@@ -6,5 +6,7 @@
 @layer base {
     html {
         @apply font-serif;
+        @apply dark:bg-stone-900;
+        @apply dark:text-gray-50;
     }
 }
