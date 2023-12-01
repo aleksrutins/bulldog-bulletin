@@ -1,0 +1,23 @@
+[project]
+name = "bulldog-bulletin"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Aleks Rūtiņš <aleks@rutins.com>"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
+
+[tasks]
+
+build-assets = "cp -r static/* public/"
+build-sass = "mkdir -p public/assets && sass styles/main.scss public/assets/site.css"
+build-content = "python build.py"
+
+build = { depends_on = [ "build-assets", "build-sass", "build-content" ] }
+
+serve = { depends_on = [ "build" ], cmd = "python3 -m http.server 8000 -d public" }
+
+[dependencies]
+python = "3.12.0.*"
+gql-with-aiohttp = "3.4.1.*"
+jinja2 = "3.1.2.*"
+dart-sass = "1.58.3.*"

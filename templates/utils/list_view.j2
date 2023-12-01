@@ -1,0 +1,33 @@
+{% macro main_header(categories, current_cat) -%}
+    <a class="logotype" href="/">The Bulldog Bulletin</a>
+    <nav id="sitenav">
+        {% for cat in categories %}
+            <a href="/c/{{cat}}"
+            {% if cat == current_cat %}
+               class="active"
+            {% else %}{% endif %}
+            >{{ cat }}</a>
+        {% endfor %}
+    </nav>
+{%- endmacro -%}
+
+{%- macro content(articles, current_cat) -%}
+    {% for article in articles %}
+        <div class="article-preview">
+            {% set blurb = article['content']['blocks'][0]['data']['text'] %}
+            <h2>{{ article['title'] }}</h2>
+            <p class="stats">
+                <a>{{ article['author'] }}</a>
+                {% for cat in article['categories'] %}
+                    •
+                    <a href="/c/{{cat}}"
+                    {% if cat == current_cat %}
+                    class="active"
+                    {% else %}{% endif %}
+                    >{{ cat }}</a>
+                {% endfor %}
+            </p>
+            <p>{{ blurb | safe }}</p>
+        </div>
+    {% endfor %}
+{%- endmacro -%}

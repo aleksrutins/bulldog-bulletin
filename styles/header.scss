@@ -1,0 +1,44 @@
+header#site-header {
+    border-bottom: 1px solid rgb(128, 128, 128);
+    padding: $space-lg;
+
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+header#small-header {
+    position: fixed;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: row;
+}
+
+a.logotype {
+    font-family: $font-display;
+    font-size: larger;
+    padding: 0;
+    margin: 0;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+nav#sitenav {
+    display: flex;
+    flex-direction: row;
+    gap: $space-sm;
+
+    a {
+        display: block;
+    }
+}
+
+a {
+    &:not(.active) {text-decoration: none;}
+    color: inherit;
+}

@@ -1,0 +1,12 @@
+{% extends "base.j2" %}
+{% import "utils/list_view.j2" as lv %}
+
+{% block title %}{{ tag }}{% endblock title %}
+
+{% block main_header %}
+    {{ lv.main_header(["Sports", "Drama", "Academics", "World"], tag) }}
+{% endblock main_header %}
+
+{% block content %}
+    {{ lv.content(filtered_articles, tag) }}
+{% endblock content %}
