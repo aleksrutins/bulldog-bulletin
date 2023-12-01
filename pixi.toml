@@ -8,11 +8,13 @@ platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
 
 [tasks]
 
+ensure-public = "mkdir -p public"
+
 build-assets = "cp -r static/* public/"
 build-sass = "mkdir -p public/assets && sass styles/main.scss public/assets/site.css"
 build-content = "python build.py"
 
-build = { depends_on = [ "build-assets", "build-sass", "build-content" ] }
+build = { depends_on = [ "ensure-public", "build-assets", "build-sass", "build-content" ] }
 
 serve = { depends_on = [ "build" ], cmd = "python3 -m http.server 8000 -d public" }
 
