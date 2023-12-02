@@ -1,12 +1,12 @@
 main {
-    width: 600px;
+    width: 800px;
     margin: auto;
     margin-top: 10px;
     padding: 1rem;
 
     box-sizing: border-box;
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         width: 100vw;
     }
 }
@@ -22,12 +22,7 @@ div.article-preview {
 
     a.article-title {
         font-weight: bold;
-    }
-
-    h2 {
-        font-size: large;
-        font-family: $font-display;
-        margin-bottom: 0;
+        font-size: larger;
     }
 
     p.stats {

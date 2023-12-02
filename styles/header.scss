@@ -1,5 +1,5 @@
 header#site-header {
-    border-bottom: 1px solid rgb(128, 128, 128);
+    border-bottom: 1px solid rgb(221, 221, 221);
     padding: $space-lg;
 
     background-color: white;
@@ -24,7 +24,7 @@ header#small-header {
 
     padding: 5px;
 
-    border-bottom: 1px solid rgb(128, 128, 128);
+    box-shadow: 0px 0px 10px -2px gray;
 
     display: flex;
     flex-direction: row;
@@ -54,7 +54,7 @@ a.logotype {
     text-decoration: none;
 }
 
-nav#sitenav {
+nav.sitenav {
     display: flex;
     flex-direction: row;
     gap: $space-sm;

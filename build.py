@@ -15,9 +15,17 @@ for article in data['articles']:
             tags_compiled.add(tag)
             compile_template('category', f'/c/{slugify(tag)}', data, 
                              tag=tag,
-                             filtered_articles = 
+                             filtered_articles= 
                                 [
                                     article for article in data['articles']
                                     if tag in article['categories']
                                 ]
                              )
+
+for issue in data['issues']:
+    issue_articles = [
+        article for article in data['articles']
+        if article['issue']['id'] == issue['id']
+    ]
+
+    compile_template('issue', f'/issues/{issue['id']}', data, issue=issue, issue_articles=issue_articles)

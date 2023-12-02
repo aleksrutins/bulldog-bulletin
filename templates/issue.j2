@@ -1,0 +1,21 @@
+{% extends "base.j2" %}
+{% import "utils/list_view.j2" as lv %}
+
+{% block title %}Issue #{{ issue.id }}{% endblock title %}
+
+{% block main_header %}
+    {{ lv.main_header() }}
+{% endblock main_header %}
+
+{% block fixed_header %}
+    {{ lv.category_list() }}
+{% endblock fixed_header %}
+
+{% block content %}
+    <div id="issue-header">
+        <h1>Issue #{{ issue.id }}</h1>
+        <p>Published on <time datetime="{{ issue.published_at }}" data-date-only></time></p>
+    </div>
+
+    {{ lv.content(issue_articles, False) }}
+{% endblock content %}

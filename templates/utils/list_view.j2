@@ -1,6 +1,7 @@
-{% macro main_header(categories, current_cat) -%}
-    <a class="logotype" href="/">The Bulldog Bulletin</a>
-    <nav id="sitenav">
+{% macro category_list(current_cat) %}
+    {% set categories = ['Sports', 'Drama', 'Academics', 'World'] %}
+
+    <nav class="sitenav">
         {% for cat in categories %}
             <a href="/c/{{slugify(cat)}}"
             {% if cat == current_cat %}
@@ -9,9 +10,14 @@
             >{{ cat }}</a>
         {% endfor %}
     </nav>
+{% endmacro %}
+
+{% macro main_header(current_cat) -%}
+    <a class="logotype" href="/">The Bulldog Bulletin</a>
+    {{ category_list(current_cat) }}
 {%- endmacro -%}
 
-{%- macro content(articles, current_cat) -%}
+{%- macro content(articles, show_issue, current_cat) -%}
     {% for article in articles %}
         <div class="article-preview">
             <a class="article-title" href="/articles/{{ article.id }}">{{ article.title }}</a>
@@ -19,6 +25,10 @@
                 <a>{{ article.author }}</a>
                 •
                 <time datetime="{{ article.published_at }}"></time>
+                {% if show_issue and article['issue'] is not none %}
+                •
+                <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>
+                {% endif %}
                 {% for cat in article.categories %}
                     •
                     <a href="/c/{{slugify(cat)}}"

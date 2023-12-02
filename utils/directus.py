@@ -12,7 +12,7 @@ def everything():
     query {
         articles(filter: {
             status: {
-            _eq: "published"
+                _eq: "published"
             }
         }) {
             id
@@ -24,12 +24,21 @@ def everything():
             categories
             summary
             content
-            issue
+            issue { id }
             column {
                 name
                 id
                 description
             }
+        }
+
+        issues(filter: {
+            status: {
+                _eq: "published"
+            }
+        }) {
+            id
+            published_at
         }
     }
     """)

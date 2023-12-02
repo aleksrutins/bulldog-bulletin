@@ -4,9 +4,13 @@
 {% block title %}Home{% endblock title %}
 
 {% block main_header %}
-    {{ lv.main_header(["Sports", "Drama", "Academics", "World"]) }}
+    {{ lv.main_header() }}
 {% endblock main_header %}
 
+{% block fixed_header %}
+    {{ lv.category_list() }}
+{% endblock fixed_header %}
+
 {% block content %}
-    {{ lv.content(articles) }}
+    {{ lv.content(articles, True) }}
 {% endblock content %}

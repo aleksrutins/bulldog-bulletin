@@ -19,6 +19,10 @@
         <a>{{ article.author }}</a>
         •
         <time datetime="{{ article.published_at }}"></time>
+        {% if show_issue and article['issue'] is not none %}
+        •
+        <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>
+        {% endif %}
         {% for cat in article.categories %}
         •
         <a href="/c/{{slugify(cat)}}">{{ cat }}</a>

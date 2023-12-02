@@ -4,9 +4,13 @@
 {% block title %}{{ tag }}{% endblock title %}
 
 {% block main_header %}
-    {{ lv.main_header(["Sports", "Drama", "Academics", "World"], tag) }}
+    {{ lv.main_header(tag) }}
 {% endblock main_header %}
 
+{% block fixed_header %}
+    {{ lv.category_list(tag) }}
+{% endblock fixed_header %}
+
 {% block content %}
-    {{ lv.content(filtered_articles, tag) }}
+    {{ lv.content(filtered_articles, True, tag) }}
 {% endblock content %}
