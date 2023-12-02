@@ -6,6 +6,12 @@
 <a class="logotype" href="/" style="margin-top: -15px; margin-bottom: -15px;">The Bulldog Bulletin</a>
 {% endblock main_header %}
 
+{% block fixed_header %}
+<p id="article-header-title">{{ article.title }}</p>
+•
+<p><em>{{ article.author }}</em></p>
+{% endblock fixed_header %}
+
 {% block content %}
 <div id="article-page">
     <h1 class="title">{{ article.title }}</h1>

@@ -7,11 +7,11 @@
         <title>{% block title %}{% endblock title %} | The Bulldog Bulletin</title>
     </head>
     <body>
-        <header id="site-header">
-            {% block main_header %}{% endblock main_header %}
-        </header>
         <header id="small-header">
             {% block fixed_header %}{% endblock fixed_header %}
+        </header>
+        <header id="site-header">
+            {% block main_header %}{% endblock main_header %}
         </header>
         <main>
             {% block content %}{% endblock content %}
