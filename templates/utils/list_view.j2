@@ -2,7 +2,7 @@
     <a class="logotype" href="/">The Bulldog Bulletin</a>
     <nav id="sitenav">
         {% for cat in categories %}
-            <a href="/c/{{cat}}"
+            <a href="/c/{{slugify(cat)}}"
             {% if cat == current_cat %}
                class="active"
             {% else %}{% endif %}
@@ -20,7 +20,7 @@
                 <a>{{ article['author'] }}</a>
                 {% for cat in article['categories'] %}
                     •
-                    <a href="/c/{{cat}}"
+                    <a href="/c/{{slugify(cat)}}"
                     {% if cat == current_cat %}
                     class="active"
                     {% else %}{% endif %}

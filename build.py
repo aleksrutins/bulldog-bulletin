@@ -1,3 +1,4 @@
+from slugify import slugify
 from utils import directus
 from utils.gen import compile_template
 
@@ -11,7 +12,7 @@ for article in data['articles']:
     for tag in article['categories']:
         if tag not in tags_compiled:
             tags_compiled.add(tag)
-            compile_template('category', f'/c/{tag}', data, 
+            compile_template('category', f'/c/{slugify(tag)}', data, 
                              tag=tag,
                              filtered_articles = 
                                 [

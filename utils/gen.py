@@ -1,13 +1,16 @@
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from slugify import slugify
 
 
 env = Environment(
     loader=FileSystemLoader("templates"),
     autoescape=select_autoescape(
         enabled_extensions=("html", "xml", "j2")
-    )
+    ),
 )
+
+env.globals.update(slugify=slugify)
 
 def compile_template(name: str, out_path: str, *args, **kwargs):
     print(f'compile: {out_path}')
