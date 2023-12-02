@@ -19,8 +19,10 @@ def everything():
             author
             date_created
             date_updated
+            published_at
             title
             categories
+            summary
             content
             issue
             column {

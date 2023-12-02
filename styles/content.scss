@@ -20,6 +20,10 @@ div.article-preview {
 
     border-bottom: 1px solid black;
 
+    a.article-title {
+        font-weight: bold;
+    }
+
     h2 {
         font-size: large;
         font-family: $font-display;

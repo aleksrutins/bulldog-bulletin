@@ -9,6 +9,7 @@ compile_template('index', '/', data)
 tags_compiled = set()
 for article in data['articles']:
     compile_template('article', f'/articles/{article['id']}', data, article=article)
+    
     for tag in article['categories']:
         if tag not in tags_compiled:
             tags_compiled.add(tag)

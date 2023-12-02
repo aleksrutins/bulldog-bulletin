@@ -14,11 +14,12 @@
 {%- macro content(articles, current_cat) -%}
     {% for article in articles %}
         <div class="article-preview">
-            {% set blurb = article['content']['blocks'][0]['data']['text'] %}
-            <h2>{{ article['title'] }}</h2>
+            <a class="article-title" href="/articles/{{ article.id }}">{{ article.title }}</a>
             <p class="stats">
-                <a>{{ article['author'] }}</a>
-                {% for cat in article['categories'] %}
+                <a>{{ article.author }}</a>
+                •
+                <time datetime="{{ article.published_at }}"></time>
+                {% for cat in article.categories %}
                     •
                     <a href="/c/{{slugify(cat)}}"
                     {% if cat == current_cat %}
@@ -27,7 +28,7 @@
                     >{{ cat }}</a>
                 {% endfor %}
             </p>
-            <p>{{ blurb | safe }}</p>
+            <p>{{ article.summary }}</p>
         </div>
     {% endfor %}
 {%- endmacro -%}

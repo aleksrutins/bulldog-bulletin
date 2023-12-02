@@ -1,2 +1,26 @@
 {% extends "base.j2" %}
 
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block main_header %}
+<a class="logotype" href="/" style="margin-top: -15px; margin-bottom: -15px;">The Bulldog Bulletin</a>
+{% endblock main_header %}
+
+{% block content %}
+<div id="article-page">
+    <h1 class="title">{{ article.title }}</h1>
+    <p>
+        <a>{{ article.author }}</a>
+        •
+        <time datetime="{{ article.published_at }}"></time>
+        {% for cat in article.categories %}
+        •
+        <a href="/c/{{slugify(cat)}}">{{ cat }}</a>
+        {% endfor %}
+    </p>
+    <summary>{{ article.summary }}</summary>
+    <article>
+        {{ article.content | safe }}
+    </article>
+</div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+#article-page {
+    h1.title {
+        font-size: 32pt;
+        font-family: $font-display;
+    }
+
+    p {
+        color: rgb(53, 53, 53);
+    }
+
+    summary {
+        font-size: 14pt;
+        font-style: italic;
+    }
+
+    article {
+        border-top: 1px solid black;
+        padding-top: 20px;
+        margin-top: 10px;
+
+        a {
+            color: rgb(72, 72, 255);
+        }
+    }
+}
