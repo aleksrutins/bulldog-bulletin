@@ -14,7 +14,7 @@ def everything():
             status: {
                 _eq: "published"
             }
-        }) {
+        }, sort: ["-published_at"]) {
             id
             author
             date_created
