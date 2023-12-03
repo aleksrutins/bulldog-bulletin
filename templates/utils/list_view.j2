@@ -24,7 +24,7 @@
             <p class="stats">
                 <a>{{ article.author }}</a>
                 •
-                <time datetime="{{ article.published_at }}"></time>
+                <time datetime="{{ article.published_at }}">{{ fmt_date(article.published_at) }}</time>
                 {% if show_issue and article['issue'] is not none %}
                 •
                 <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>

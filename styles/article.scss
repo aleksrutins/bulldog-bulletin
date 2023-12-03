@@ -1,10 +1,52 @@
 #article-page {
     header {
+
         p {
             color: rgb(53, 53, 53);
             font-size: 10pt;
+
             a[href]:not(:hover) {
                 text-decoration: underline;
+            }
+        }
+
+        summary:last-of-type {
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+        }
+
+        .author-display {
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            gap: 3px;
+
+            margin: 10px;
+
+            :not(:has(img)) {
+                margin-left: 0;
+            }
+
+            img {
+                border-radius: 50%;
+                display: block;
+            }
+
+            .text-content {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+
+                p {
+                    padding: 0;
+                    margin: 0;
+
+                    &.author {
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }
@@ -20,9 +62,7 @@
     }
 
     article {
-        border-top: 1px solid black;
         padding-top: 20px;
-        margin-top: 10px;
 
         font-size: 14pt;
 

@@ -14,7 +14,7 @@
 {% block content %}
     <header class="category-header">
         <h1>Issue #{{ issue.id }}</h1>
-        <p>Published on <time datetime="{{ issue.published_at }}" data-date-only></time></p>
+        <p>Published on <time datetime="{{ issue.published_at }}">{{ fmt_date(issue.published_at, True) }}</time></p>
     </header>
 
     {{ lv.content(issue_articles, False) }}
