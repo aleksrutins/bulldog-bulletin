@@ -12,5 +12,12 @@
 {% endblock fixed_header %}
 
 {% block content %}
+    {% if issues|length > 0 %}
+        {% set latest_issue = issues | first %}
+        <a id="latest-issue" href="/issues/{{ latest_issue.id }}">
+            Latest issue: <time datetime="{{ latest_issue.published_at }}" data-date-only></time>
+        </a>
+    {% endif %}
+
     {{ lv.content(articles, True) }}
 {% endblock content %}

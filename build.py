@@ -25,7 +25,7 @@ for article in data['articles']:
 for issue in data['issues']:
     issue_articles = [
         article for article in data['articles']
-        if article['issue']['id'] == issue['id']
+        if article['issue'] is not None and article['issue']['id'] == issue['id']
     ]
 
     compile_template('issue', f'/issues/{issue['id']}', data, issue=issue, issue_articles=issue_articles)

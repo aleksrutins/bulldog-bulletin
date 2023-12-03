@@ -28,17 +28,17 @@
     <header>
         <h1 class="title">{{ article.title }}</h1>
         <p>
-            <a class="byline-name" rel="author">{{ article.author }}</a>
-            •
-            <time class="dateline" datetime="{{ article.published_at }}"></time>
-            {% if show_issue and article['issue'] is not none %}
-            •
-            <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>
+            By <a class="byline-name" rel="author">{{ article.author }}</a><br>
+            Published <time class="dateline" datetime="{{ article.published_at }}"></time><br>
+            {% if article['issue'] is not none %}
+                In <a href="/issues/{{article['issue']['id']}}">issue #{{article['issue']['id']}}</a><br>
             {% endif %}
+
+            {% if article.categories|length > 0 %}Published in{% endif %}
             {% for cat in article.categories %}
-            •
-            <a href="/c/{{slugify(cat)}}">{{ cat }}</a>
-            {% endfor %}
+                {%- if loop.index != 1 -%}, {%- endif %}
+                <a href="/c/{{slugify(cat)}}">{{ cat }}</a>
+            {%- endfor %}
         </p>
         <summary>{{ article.summary }}</summary>
     </header>

@@ -12,10 +12,10 @@
 {% endblock fixed_header %}
 
 {% block content %}
-    <div id="issue-header">
+    <header class="category-header">
         <h1>Issue #{{ issue.id }}</h1>
         <p>Published on <time datetime="{{ issue.published_at }}" data-date-only></time></p>
-    </div>
+    </header>
 
     {{ lv.content(issue_articles, False) }}
 {% endblock content %}
