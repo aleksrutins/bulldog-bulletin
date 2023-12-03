@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/assets/site.css">
         <title>{% block title %}{% endblock title %} | The Bulldog Bulletin</title>
+
+        <meta property="og:site_name" content="The Bulldog Bulletin">
+        {% block head %}
+        <meta name="description" content="The student-run newspaper of Burr & Burton Academy in Manchester, Vermont.">
+        {% endblock head %}
     </head>
     <body>
         <header id="small-header">
