@@ -13,7 +13,9 @@
 {% endmacro %}
 
 {% macro main_header(current_cat) -%}
-    <a class="logotype" href="/">The Bulldog Bulletin</a>
+    <a class="logotype" href="/">
+        <img src="/masthead.png" alt="The Bulldog Bulletin" height="32">
+    </a>
     {{ category_list(current_cat) }}
 {%- endmacro -%}
 
