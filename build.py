@@ -1,6 +1,6 @@
 from slugify import slugify
 from utils import directus
-from utils.gen import compile_template
+from utils.gen import compile_template, write_sitemap
 
 data = directus.everything()
 
@@ -29,3 +29,5 @@ for issue in data['issues']:
     ]
 
     compile_template('issue', f'/issues/{issue['id']}', data, issue=issue, issue_articles=issue_articles)
+
+write_sitemap()

@@ -4,6 +4,11 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from slugify import slugify
 
+import pandas as pd
+
+sitemap_baseurl = 'https://bulldog.burrburton.org'
+
+sitemap_urls: list[str] = []
 
 env = Environment(
     loader=FileSystemLoader("templates"),
@@ -32,3 +37,18 @@ def compile_template(name: str, out_path: str, *args, **kwargs):
 
     with open(out_file, 'w') as f:
         f.write(template.render(*args, **kwargs))
+
+    sitemap_urls.append(sitemap_baseurl + out_path)
+
+def write_sitemap():
+    print('sitemap: sitemap.xml')
+    # https://www.jcchouinard.com/create-xml-sitemap-with-python/
+    # Create a DataFrame from the list of URLs
+    df = pd.DataFrame(sitemap_urls, columns=["URL"])
+
+    # Convert DataFrame to XML
+    xml_data = df.to_xml(root_name="urlset", row_name="url", xml_declaration=True)
+
+    # Save the XML data to a file
+    with open("public/sitemap.xml", "w") as file:
+        file.write(xml_data)
