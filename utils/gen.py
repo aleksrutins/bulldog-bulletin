@@ -4,8 +4,6 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from slugify import slugify
 
-import pandas as pd
-
 sitemap_baseurl = 'https://bulldog.burrburton.org'
 
 sitemap_urls: list[str] = []
