@@ -41,4 +41,4 @@ def compile_template(name: str, out_path: str, *args, **kwargs):
     sitemap_urls.append(sitemap_baseurl + out_path)
 
 def write_sitemap():
-    compile_template('sitemap', '/sitemap.xml', urls=sitemap_urls)
+    compile_template('sitemap.xml', '/sitemap.xml', urls=sitemap_urls)
