@@ -31,9 +31,11 @@ def compile_template(name: str, out_path: str, *args, **kwargs):
     template = env.get_template(name + ".j2")
 
     out_dir = f'public{out_path}'
-    out_file = f'{out_dir}index.html' if out_path == '/' else f'{out_dir}/index.html'
+    out_file = f'{out_dir}index.html' if out_path == '/' else (
+               f'{out_dir}' if out_path == '/sitemap.xml' else
+               f'{out_dir}/index.html')
 
-    Path(out_dir).mkdir(parents=True, exist_ok=True)
+    Path(out_dir).mkdir(parents=True, exist_ok=True) if out_path != '/sitemap.xml' else None
 
     with open(out_file, 'w') as f:
         f.write(template.render(*args, **kwargs))
@@ -41,14 +43,4 @@ def compile_template(name: str, out_path: str, *args, **kwargs):
     sitemap_urls.append(sitemap_baseurl + out_path)
 
 def write_sitemap():
-    print('sitemap: sitemap.xml')
-    # https://www.jcchouinard.com/create-xml-sitemap-with-python/
-    # Create a DataFrame from the list of URLs
-    df = pd.DataFrame(sitemap_urls, columns=["URL"])
-
-    # Convert DataFrame to XML
-    xml_data = df.to_xml(root_name="urlset", row_name="url", xml_declaration=True)
-
-    # Save the XML data to a file
-    with open("public/sitemap.xml", "w") as file:
-        file.write(xml_data)
+    compile_template('sitemap', '/sitemap.xml', urls=sitemap_urls)
