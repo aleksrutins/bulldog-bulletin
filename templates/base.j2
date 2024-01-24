@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/assets/site.css">
-        
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link rel="stylesheet" href="https://fonts.bunny.net/css?family=abril-fatface:400|besley:400,700|inter:400,700&display=swap">
-        <link rel="icon" href="/logo.png">
-        <title>{% block title %}{% endblock title %} | The Bulldog Bulletin</title>
 
-        <meta name="google-site-verification" content="WTOhXYWWJH5tYJF-PUBpxTbID0q15OJ4mjWoYMmoLGk" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/site.css">
 
-        <meta property="og:site_name" content="The Bulldog Bulletin">
-        {% block head %}
-        <meta name="description" content="The student-run newspaper of Burr & Burton Academy in Manchester, Vermont.">
-        {% endblock head %}
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="stylesheet"
+        href="https://fonts.bunny.net/css?family=abril-fatface:400|besley:400,700|inter:400,700&display=swap">
+    <link rel="icon" href="/logo.png">
+    <title>{% block title %}{% endblock title %} | The Bulldog Bulletin</title>
 
-        <script async src="https://analytics.farthergate.com/script.js" data-website-id="7e803eba-9ebb-4a2b-b4cf-c33282acdea4"></script>
-    </head>
-    <body>
-        <header id="small-header">
-            {% block fixed_header %}{% endblock fixed_header %}
-        </header>
-        <header id="site-header">
-            {% block main_header %}{% endblock main_header %}
-        </header>
-        <main>
-            {% block content %}{% endblock content %}
-        </main>
-    </body>
+    <meta name="google-site-verification" content="WTOhXYWWJH5tYJF-PUBpxTbID0q15OJ4mjWoYMmoLGk" />
+
+    <meta property="og:site_name" content="The Bulldog Bulletin">
+    {% block head %}
+    <meta name="description" content="The student-run newspaper of Burr & Burton Academy in Manchester, Vermont.">
+    {% endblock head %}
+
+    <script async src="https://analytics.farthergate.com/script.js"
+        data-website-id="7e803eba-9ebb-4a2b-b4cf-c33282acdea4"></script>
+    <script src="/vendor/htmx.min.js"></script>
+</head>
+
+<body>
+    <header id="small-header">
+        {% block fixed_header %}{% endblock fixed_header %}
+    </header>
+    <header id="site-header">
+        {% block main_header %}{% endblock main_header %}
+    </header>
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+
 </html>

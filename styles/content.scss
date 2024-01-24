@@ -42,3 +42,23 @@ div.article-preview {
         margin-bottom: 0;
     }
 }
+
+div.post-preview {
+    border-radius: 10px;
+    border: 1px solid rgb(95, 95, 95);
+    padding: 15px;
+
+    p.stats {
+        color: rgb(95, 95, 95);
+        margin-top: 0;
+        font-style: oblique;
+    }
+
+    button.swap-content {
+        border: none;
+        background: none;
+        font: inherit;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

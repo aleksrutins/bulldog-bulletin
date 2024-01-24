@@ -20,6 +20,7 @@ def everything():
             date_created
             date_updated
             published_at
+            type
             title
             categories
             summary

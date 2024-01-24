@@ -1,46 +1,55 @@
 {% macro category_list(current_cat) %}
-    {% set categories = ['Sports', 'Drama', 'Academics', 'Opinion', 'Humor'] %}
+{% set categories = ['Sports', 'Drama', 'Academics', 'Opinion', 'Humor'] %}
 
-    <nav class="sitenav">
-        {% for cat in categories %}
-            <a href="/c/{{slugify(cat)}}"
-            {% if cat == current_cat %}
-               class="active"
-            {% else %}{% endif %}
-            >{{ cat }}</a>
-        {% endfor %}
-    </nav>
+<nav class="sitenav">
+    {% for cat in categories %}
+    <a href="/c/{{slugify(cat)}}" {% if cat==current_cat %} class="active" {% else %}{% endif %}>{{ cat }}</a>
+    {% endfor %}
+</nav>
 {% endmacro %}
 
 {% macro main_header(current_cat) -%}
-    <a class="logotype" href="/">
-        <img src="/masthead.png" alt="The Bulldog Bulletin" height="32">
-    </a>
-    {{ category_list(current_cat) }}
+<a class="logotype" href="/">
+    <img src="/masthead.png" alt="The Bulldog Bulletin" height="32">
+</a>
+{{ category_list(current_cat) }}
+{%- endmacro -%}
+
+{%- macro article_preview_stats(article, show_issue, current_cat) %}
+<p class="stats">
+    <a>{{ article.author }}</a>
+    •
+    <time datetime="{{ article.published_at }}">{{ fmt_date(article.published_at) }}</time>
+    {% if show_issue and article['issue'] is not none %}
+    •
+    <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>
+    {% endif %}
+    {% for cat in article.categories %}
+    •
+    <a href="/c/{{slugify(cat)}}" {% if cat==current_cat %} class="active" {% else %}{% endif %}>{{ cat }}</a>
+    {% endfor %}
+</p>
 {%- endmacro -%}
 
 {%- macro content(articles, show_issue, current_cat) -%}
-    {% for article in articles %}
-        <div class="article-preview">
-            <a class="article-title" href="/articles/{{ article.id }}">{{ article.title }}</a>
-            <p class="stats">
-                <a>{{ article.author }}</a>
-                •
-                <time datetime="{{ article.published_at }}">{{ fmt_date(article.published_at) }}</time>
-                {% if show_issue and article['issue'] is not none %}
-                •
-                <a href="/issues/{{article['issue']['id']}}">Issue #{{article['issue']['id']}}</a>
-                {% endif %}
-                {% for cat in article.categories %}
-                    •
-                    <a href="/c/{{slugify(cat)}}"
-                    {% if cat == current_cat %}
-                    class="active"
-                    {% else %}{% endif %}
-                    >{{ cat }}</a>
-                {% endfor %}
-            </p>
-            <p>{{ article.summary }}</p>
-        </div>
-    {% endfor %}
+{% for article in articles %}
+{% if article.type == 'article' %}
+<div class="article-preview">
+    <a class="article-title" href="/articles/{{ article.id }}">{{ article.title }}</a>
+    {{ article_preview_stats(article, show_issue, current_cat) }}
+    <p>{{ article.summary | safe }}</p>
+</div>
+{% else %}
+<div class="post-preview">
+    {{ article_preview_stats(article, show_issue, current_cat) }}
+    <div class="post-content" id="post-content-{{ article.id }}">
+        <p>{{ article.content | truncate | safe }}</p>
+        <button class="swap-content" hx-get="/articles/{{ article.id }}" hx-select="article"
+            hx-target="#post-content-{{ article.id }}" hx-swap="outerHTML" hx-preserve="title">
+            Read More
+        </button>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
 {%- endmacro -%}
