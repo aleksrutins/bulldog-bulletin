@@ -43,11 +43,14 @@
 <div class="post-preview">
     {{ article_preview_stats(article, show_issue, current_cat) }}
     <div class="post-content" id="post-content-{{ article.id }}">
-        <p>{{ article.content | truncate | safe }}</p>
+        {% set truncated = article.content | truncate %}
+        <p>{{ truncated | safe }}</p>
+        {% if truncated != article.content %}
         <button class="swap-content" hx-get="/articles/{{ article.id }}" hx-select="article"
             hx-target="#post-content-{{ article.id }}" hx-swap="outerHTML" hx-preserve="title">
             Read More
         </button>
+        {% endif %}
     </div>
 </div>
 {% endif %}
