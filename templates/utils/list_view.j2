@@ -48,13 +48,14 @@
             {{ truncated | safe }}
         </div>
         {% if truncated != article.content %}
-        <div id="post-content-hidden-{{ article.id }}" style="display: none;" aria-hidden="false">
+        <div id="post-content-hidden-{{ article.id }}" class="visually-hidden" aria-hidden="false">
             {{ article.content | safe }}
         </div>
         <button class="swap-content"
                 data-article="{{ article.id }}"
                 data-hidden="#post-content-hidden-{{ article.id }}"
-                data-visible="#post-content-visible-{{ article.id }}">
+                data-visible="#post-content-visible-{{ article.id }}"
+                aria-hidden="true">
             Read More
         </button>
         {% endif %}
