@@ -44,10 +44,17 @@
     {{ article_preview_stats(article, show_issue, current_cat) }}
     <div class="post-content" id="post-content-{{ article.id }}">
         {% set truncated = article.content | truncate %}
-        <p>{{ truncated | safe }}</p>
+        <div id="post-content-visible-{{ article.id }}" aria-hidden="true">
+            {{ truncated | safe }}
+        </div>
         {% if truncated != article.content %}
-        <button class="swap-content" hx-get="/articles/{{ article.id }}" hx-select="article"
-            hx-target="#post-content-{{ article.id }}" hx-swap="outerHTML" hx-preserve="title">
+        <div id="post-content-hidden-{{ article.id }}" style="display: none;" aria-hidden="false">
+            {{ article.content | safe }}
+        </div>
+        <button class="swap-content"
+                data-article="{{ article.id }}"
+                data-hidden="#post-content-hidden-{{ article.id }}"
+                data-visible="#post-content-visible-{{ article.id }}">
             Read More
         </button>
         {% endif %}
