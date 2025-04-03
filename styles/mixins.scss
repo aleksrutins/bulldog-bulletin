@@ -1,0 +1,8 @@
+@mixin banner($color, $bg) {
+    display: block;
+    padding: 15px;
+    background-color: $bg;
+    color: $color;
+    font-size: 13px;
+    font-weight: bold;
+}

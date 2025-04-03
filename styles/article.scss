@@ -1,12 +1,15 @@
 #article-page {
     header {
-
         p {
             color: rgb(53, 53, 53);
             font-size: 10pt;
 
             a[href]:not(:hover) {
                 text-decoration: underline;
+            }
+
+            &.article-draft-notify {
+                @include banner(black, rgba(255, 255, 100, 0.5));
             }
         }
 
@@ -68,7 +71,7 @@
 
         a {
             color: rgb(21, 130, 163);
-            
+
             &:not(:hover) {
                 text-decoration: underline;
             }

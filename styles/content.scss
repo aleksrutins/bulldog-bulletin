@@ -12,12 +12,7 @@ main {
 }
 
 a#latest-issue {
-    display: block;
-    padding: 15px;
-    background-color: rgb(195, 243, 195);
-    color: rgb(6, 27, 6);
-    font-size: 13px;
-    font-weight: bold;
+    @include banner(rgb(6, 27, 6), rgb(195, 243, 195));
     margin-bottom: 20px;
 }
 

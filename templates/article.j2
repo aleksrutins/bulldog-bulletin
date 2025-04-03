@@ -28,6 +28,9 @@
 {% block content %}
 <div id="article-page">
     <header>
+        {% if article.status == 'draft' %}
+        <p class="article-draft-notify">This article is a draft and not shown in lists or indexed.</p>
+        {% endif %}
         <h1 class="title">{{ article.title }}</h1>
         <summary>{{ article.summary }}</summary>
 

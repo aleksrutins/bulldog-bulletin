@@ -10,11 +10,7 @@ def exec(query: str):
 def everything():
     return exec("""
     query {
-        articles(filter: {
-            status: {
-                _eq: "published"
-            }
-        }, sort: ["-published_at"]) {
+        articles(sort: ["-published_at"]) {
             id
             author
             date_created
@@ -25,6 +21,7 @@ def everything():
             categories
             summary
             content
+            status
             issue { id }
             column {
                 name
@@ -43,4 +40,3 @@ def everything():
         }
     }
     """)
-

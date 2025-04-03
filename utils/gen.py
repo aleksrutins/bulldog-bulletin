@@ -38,7 +38,8 @@ def compile_template(name: str, out_path: str, *args, **kwargs):
     with open(out_file, 'w') as f:
         f.write(template.render(*args, **kwargs))
 
-    sitemap_urls.append(sitemap_baseurl + out_path)
+    if 'article' in kwargs and kwargs['article']['status'] == 'published':
+        sitemap_urls.append(sitemap_baseurl + out_path)
 
 def write_sitemap():
     compile_template('sitemap.xml', '/sitemap.xml', urls=sitemap_urls)
